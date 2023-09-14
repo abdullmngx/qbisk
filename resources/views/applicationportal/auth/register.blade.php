@@ -4,7 +4,7 @@
     <form class="theme-form login-form" method="post">
         @csrf
         <div class="text-center">
-            <img src="{{ public_path('logo.png') }}" class="img-fluid w-25" alt="Logo">
+            <img src="/logo.png" class="img-fluid w-25" alt="Logo">
             <h4>{{ env('APP_NAME') }}</h4>
             <h6>Fill in the form below to begin.</h6>
         </div>

@@ -18,14 +18,14 @@ https://templatemo.com/tm-516-known
      <meta name="author" content="">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-     <link rel="stylesheet" href="{{ public_path('css/bootstrap.min.css') }}">
-     <link rel="stylesheet" href="{{ public_path('css/font-awesome.min.css') }}">
-     <link rel="stylesheet" href="{{ public_path('css/owl.carousel.css') }}">
-     <link rel="stylesheet" href="{{ public_path('css/owl.theme.default.min.css') }}">
+     <link rel="stylesheet" href="/css/bootstrap.min.css">
+     <link rel="stylesheet" href="/css/font-awesome.min.css">
+     <link rel="stylesheet" href="/css/owl.carousel.css">
+     <link rel="stylesheet" href="/css/owl.theme.default.min.css">
 
      <!-- MAIN CSS -->
-     <link rel="stylesheet" href="{{ public_path('css/templatemo-style.css') }}">
-     <link rel="icon" type="image/png" sizes="32x32" href="{{ public_path('images/logo.png') }}">
+     <link rel="stylesheet" href="/css/templatemo-style.css">
+     <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
@@ -51,7 +51,7 @@ https://templatemo.com/tm-516-known
                     </button>
 
                     <!-- lOGO TEXT HERE -->
-                    <a href="#" class="navbar-brand"><span><img src="{{ public_path('logo.png') }}" width="50" height="50" alt="logo"></span> <span>Queen<span class="text-danger">Bege</span>School</span></a>
+                    <a href="#" class="navbar-brand"><span><img src="/logo.png" width="50" height="50" alt="logo"></span> <span>Queen<span class="text-danger">Bege</span>School</span></a>
                </div>
 
                <!-- MENU LINKS -->
@@ -77,7 +77,7 @@ https://templatemo.com/tm-516-known
           <div class="row">
 
                     <div class="owl-carousel owl-theme home-slider">
-                         <div class="item" style="background-image: url({{ public_path('images/slider-image1.jpg') }});background-position: center;">
+                         <div class="item" style="background-image: url(/images/slider-image1.jpg);background-position: center;">
                               <div class="caption">
                                    <div class="container">
                                         <div class="col-md-6 col-sm-12">
@@ -87,7 +87,7 @@ https://templatemo.com/tm-516-known
                               </div>
                          </div>
 
-                         <div class="item" style="background-image: url({{ public_path('images/slider-image2.jpg') }});background-position: center;">
+                         <div class="item" style="background-image: url(/images/slider-image2.jpg);background-position: center;">
                               <div class="caption">
                                    <div class="container">
                                         <div class="col-md-6 col-sm-12 mt-4">
@@ -96,7 +96,7 @@ https://templatemo.com/tm-516-known
                                    </div>
                               </div>
                          </div>
-                         <div class="item" style="background-image: url({{ public_path('images/image4.jpg') }});background-position: center;">
+                         <div class="item" style="background-image: url(/images/image4.jpg);background-position: center;">
                               <div class="caption">
                                    <div class="container">
                                         <div class="col-md-6 col-sm-12 mt-4">
@@ -106,7 +106,7 @@ https://templatemo.com/tm-516-known
                               </div>
                          </div>
 
-                         <div class="item" style="background-image: url({{ public_path('images/slider-image3.jpg') }});background-position: center;">
+                         <div class="item" style="background-image: url(/images/slider-image3.jpg);background-position: center;">
                               <div class="caption">
                                    <div class="container">
                                         <div class="col-md-6 col-sm-12 mt-4">
@@ -245,7 +245,7 @@ https://templatemo.com/tm-516-known
                     <div class="col-md-3 col-sm-6">
                          <div class="team-thumb">
                               <div class="team-image">
-                                   <img src="{{ public_path('images/author-image1.jpg') }}" class="img-responsive" height="50" alt="">
+                                   <img src="/images/author-image1.jpg" class="img-responsive" height="50" alt="">
                               </div>
                               <div class="team-info">
                                    <h3>Jerimiah Zarmai Beri Ev.</h3>
@@ -257,7 +257,7 @@ https://templatemo.com/tm-516-known
                     <div class="col-md-3 col-sm-6">
                          <div class="team-thumb">
                               <div class="team-image">
-                                   <img src="{{ public_path('images/author-image2.jpg') }}" class="img-responsive" height="50" alt="">
+                                   <img src="/images/author-image2.jpg" class="img-responsive" height="50" alt="">
                               </div>
                               <div class="team-info">
                                    <h3>Ikko Jerimiah</h3>
@@ -269,7 +269,7 @@ https://templatemo.com/tm-516-known
                     <div class="col-md-3 col-sm-6">
                          <div class="team-thumb">
                               <div class="team-image">
-                                   <img src="{{ public_path('images/author-image3.jpg') }}" class="img-responsive" alt="">
+                                   <img src="/images/author-image3.jpg" class="img-responsive" alt="">
                               </div>
                               <div class="team-info">
                                    <h3>Zephaniah Jerimiah</h3>
@@ -281,7 +281,7 @@ https://templatemo.com/tm-516-known
                     <div class="col-md-3 col-sm-6">
                          <div class="team-thumb">
                               <div class="team-image">
-                                   <img src="{{ public_path('images/author-image4.jpg') }}" class="img-responsive" alt="">
+                                   <img src="/images/author-image4.jpg" class="img-responsive" alt="">
                               </div>
                               <div class="team-info">
                                    <h3>Solomon B. Una</h3>
@@ -308,7 +308,7 @@ https://templatemo.com/tm-516-known
                               <div class="col-md-4 col-sm-4">
                                    <div class="item">
                                         <div class="tst-image">
-                                             <img src="{{ public_path('images/tst-image1.jpg') }}" class="img-responsive" alt="">
+                                             <img src="/images/tst-image1.jpg" class="img-responsive" alt="">
                                         </div>
                                         <div class="tst-author">
                                              <h4>Jackson</h4>
@@ -328,7 +328,7 @@ https://templatemo.com/tm-516-known
                               <div class="col-md-4 col-sm-4">
                                    <div class="item">
                                         <div class="tst-image">
-                                             <img src="{{ public_path('images/tst-image2.jpg') }}" class="img-responsive" alt="">
+                                             <img src="/images/tst-image2.jpg" class="img-responsive" alt="">
                                         </div>
                                         <div class="tst-author">
                                              <h4>Camila</h4>
@@ -346,7 +346,7 @@ https://templatemo.com/tm-516-known
                               <div class="col-md-4 col-sm-4">
                                    <div class="item">
                                         <div class="tst-image">
-                                             <img src="{{ public_path('images/tst-image3.jpg') }}" class="img-responsive" alt="">
+                                             <img src="/images/tst-image3.jpg" class="img-responsive" alt="">
                                         </div>
                                         <div class="tst-author">
                                              <h4>Barbie</h4>
@@ -365,7 +365,7 @@ https://templatemo.com/tm-516-known
                               <div class="col-md-4 col-sm-4">
                                    <div class="item">
                                         <div class="tst-image">
-                                             <img src="{{ public_path('images/tst-image4.jpg') }}" class="img-responsive" alt="">
+                                             <img src="/images/tst-image4.jpg" class="img-responsive" alt="">
                                         </div>
                                         <div class="tst-author">
                                              <h4>Andrio</h4>
@@ -416,7 +416,7 @@ https://templatemo.com/tm-516-known
 
                     <div class="col-md-6 col-sm-12">
                          <div class="contact-image">
-                              <img src="{{ public_path('images/contact-image.jpg') }}" class="img-responsive" alt="Smiling Two Girls">
+                              <img src="/images/contact-image.jpg" class="img-responsive" alt="Smiling Two Girls">
                          </div>
                     </div>
 
@@ -488,11 +488,11 @@ https://templatemo.com/tm-516-known
 
 
      <!-- SCRIPTS -->
-     <script src="{{ public_path('js/jquery.js') }}"></script>
-     <script src="{{ public_path('js/bootstrap.min.js') }}"></script>
-     <script src="{{ public_path('js/owl.carousel.min.js') }}"></script>
-     <script src="{{ public_path('js/smoothscroll.js') }}"></script>
-     <script src="{{ public_path('js/custom.js') }}"></script>
+     <script src="/js/jquery.js"></script>
+     <script src="/js/bootstrap.min.js"></script>
+     <script src="/js/owl.carousel.min.js"></script>
+     <script src="/js/smoothscroll.js"></script>
+     <script src="/js/custom.js"></script>
 
 </body>
 </html>
