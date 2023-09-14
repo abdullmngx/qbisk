@@ -51,7 +51,7 @@
                     <img src="{{ url('/logo.jpg') }}" width="110" alt="logo">
                 </th>
                 <th style="border: 0" width="90%">
-                    <span style="text-transform: uppercase; font-size: 80px; margin: 0px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">{{ $config['school_name'] }}</span>
+                    <span style="text-transform: uppercase; font-size: 20px; margin: 0px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">{{ $config['school_name'] }}</span>
                 </th>
             </tr>
         </table>
