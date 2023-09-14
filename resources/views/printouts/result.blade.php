@@ -116,7 +116,7 @@
                     <td></td>
                     <td>{{ $result->exam_score }}</td>
                     <td>{{ $result->total_score }}</td>
-                    <td>{{$result->average}}</td>
+                    <td>{{ round($result->average, 2) }}</td>
                     <td>{{ $result->grade }}</td>
                     <td>{{ $result->grade_remark }}</td>
                 </tr>
