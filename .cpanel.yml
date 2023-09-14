@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/lifespr3/public_html/
+    - /bin/cp -R .vscode $DEPLOYPATH
+    - /bin/cp -R ./public/assets $DEPLOYPATH
+    - /bin/cp -R ./public/css $DEPLOYPATH
+    - /bin/cp -R ./public/fonts $DEPLOYPATH
+    - /bin/cp -R ./public/img $DEPLOYPATH
+    - /bin/cp -R ./public/js $DEPLOYPATH
+    /bin/cp ./public/index.html $DEPLOYPATH
