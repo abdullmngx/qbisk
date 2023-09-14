@@ -58,7 +58,7 @@
         <table border="0" style="border: 0; text-align:center">
             <tr style="border: 0; text-align:center">
                 <th style="border: 0; text-align:center" width="90%"><h4 style="text-transform: uppercase; margin: 1px;">MOTTO:</strong> KNOWLEDGE IS KEY</th>
-                <th rowspan="3" width="10%" style="border: 0"><img src="{{ url($student->passport) }}" width="80" height="100" alt=""></th>
+                <th rowspan="3" width="10%" style="border: 0"><img src="{{ $student->passport }}" width="80" height="100" alt=""></th>
             </tr>
             <tr style="border: 0; text-align:center">
                 <th style="border: 0; text-align:center" width="90%"><span style="background-color: purple; padding: 7px; color: white; border-radius: 25px; font-size: 18px; font-weight: bolder;">{{ strtoupper($student->section) }} END OF TERM REPORT</span></th>
