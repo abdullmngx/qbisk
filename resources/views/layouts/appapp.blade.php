@@ -51,8 +51,8 @@
       <div class="page-main-header">
         <div class="main-header-right row m-0">
           <div class="main-header-left">
-            <div class="logo-wrapper"><a href="/student/dashboard"><img class="img-fluid" width="40" src="/logo.png" alt=""> {{ config('app.name') }}</a></div>
-            <div class="dark-logo-wrapper"><a href="/student/dashboard"><img class="img-fluid" width="40" src="/logo.png" alt=""> {{ config('app.name') }}</a></div>
+            <div class="logo-wrapper"><a href="/student/dashboard"><img class="img-fluid" width="40" src="/logo.png" alt=""> {{ $config['school_acronym'] }}</a></div>
+            <div class="dark-logo-wrapper"><a href="/student/dashboard"><img class="img-fluid" width="40" src="/logo.png" alt=""> {{ $config['school_acronym'] }}</a></div>
             <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
           </div>
           <div class="left-menu-header col">

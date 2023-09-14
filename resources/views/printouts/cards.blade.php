@@ -15,7 +15,7 @@
         border: 1px solid black;
         border-collapse: collapse;
     }
-    table 
+    table
     {
         width: 100%;
     }
@@ -55,16 +55,13 @@
                     <img src="{{ url('/logo.jpg') }}" width="110" alt="logo">
                 </th>
                 <th style="border: 0" width="90%">
-                    <span style="text-transform: uppercase; font-size: 80px; margin: 0px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><span style="color: orangered">L</span><span style="color: blue">I</span><span style="color: orange">F</span><span>E</span> <span style="color: limegreen">S</span><span style="color: orange">P</span><span style="color: purple">R</span><span style="color: aqua">I</span><span style="color: violet">N</span><span>G</span></span>
+                    <span style="text-transform: uppercase; font-size: 80px; margin: 0px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">{{ $config['school_name'] }}</span>
                 </th>
             </tr>
         </table>
         <table border="0" style="border: 0; text-align:center">
             <tr style="border: 0; text-align:center">
-                <th style="border: 0; text-align:center" width="90%"><h4 style="text-transform: uppercase; margin: 1px;">Early Child Care Centre (ECCC), Primary & Secondary School, Minna</h4></th>
-            </tr>
-            <tr style="border: 0; text-align:center">
-                <th style="border: 0; text-align:center" width="90%"><p>No. J2B Ibrahim Aliyu Road P.O. Box 3232 Dutsen-Kura Minna, Niger State</p></th>
+                <th style="border: 0; text-align:center" width="90%"><h4 style="text-transform: uppercase; margin: 1px;">MOTTO:</strong> KNOWLEDGE IS KEY</h4></th>
             </tr>
         </table>
     </div>

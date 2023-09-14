@@ -42,15 +42,18 @@
                                                         <input type="hidden" name="names[]" value="{{ $config->name }}">
                                                         @switch($config->field_type)
                                                             @case('select')
-                                                                <select name="values[]" class="form-control">
+                                                                <select name="values[]" class="form-control form-select">
                                                                     @foreach ($config->data as $data)
                                                                         <option value="{{ $data['id'] }}" {{ $config['value'] == $data['id'] ? 'selected' : '' }}>{{ $data['name'] }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 @break
-                                                        
+                                                            @case('input')
+                                                                <input type="text" name="values[]" class="form-control" value="{{ $config['value'] }}">
+                                                                @break
+
                                                             @default
-                                                                
+
                                                         @endswitch
                                                     </td>
                                                 </tr>

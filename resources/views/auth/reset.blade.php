@@ -7,7 +7,7 @@
   <input type="hidden" name="email" value="{{ request()->get('email') }}">
     <div class="text-center">
         <img src="/logo.png" class="img-fluid w-25" alt="Logo">
-        <h4>{{ env('APP_NAME') }}</h4>
+        <h4>{{ $config('school_acronym') }}</h4>
         <h6>Reset Password</h6>
     </div>
     <div class="form-group">

@@ -8,7 +8,7 @@
     <meta name="author" content="Maestro">
     <link rel="icon" href="/logo.png" type="image/x-icon" sizes="48x48">
     <link rel="shortcut icon" href="/logo.png" type="image/x-icon" sizes="48x48">
-    <title>{{ env('APP_NAME') }} - @yield('title')</title>
+    <title>{{ $config['school_acronym'] }} - @yield('title')</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
@@ -51,8 +51,8 @@
       <div class="page-main-header">
         <div class="main-header-right row m-0">
           <div class="main-header-left">
-            <div class="logo-wrapper"><a href="/student/dashboard"><img class="img-fluid" width="40" src="/logo.png" alt=""> {{ config('app.name') }}</a></div>
-            <div class="dark-logo-wrapper"><a href="/student/dashboard"><img class="img-fluid" width="40" src="/logo.png" alt=""> {{ config('app.name') }}</a></div>
+            <div class="logo-wrapper"><a href="/student/dashboard"><img class="img-fluid" width="40" src="/logo.png" alt=""> {{ $config['school_acronym'] }}</a></div>
+            <div class="dark-logo-wrapper"><a href="/student/dashboard"><img class="img-fluid" width="40" src="/logo.png" alt=""> {{ $config['school_acronym'] }}</a></div>
             <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
           </div>
           <div class="left-menu-header col">
