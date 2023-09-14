@@ -6,6 +6,7 @@ use App\Models\AdmissionCount;
 use App\Models\Arm;
 use App\Models\Card;
 use App\Models\Configuration;
+use App\Models\Form;
 use App\Models\Invoice;
 use App\Models\InvoiceType;
 use App\Models\Result;
@@ -194,7 +195,8 @@ class StudentController extends Controller
         $dompdf = Pdf::setOptions(['isRemoteEnabled' => true]);
         $meta = [
             'session' => Session::find($request->session_id)?->name,
-            'term' => Term::find($request->term_id)?->name
+            'term' => Term::find($request->term_id)?->name,
+            'result_form' => Form::find($request->form_id)?->name
         ];
         if ($request->has('pin'))
         {

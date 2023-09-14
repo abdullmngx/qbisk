@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Configuration;
+use App\Models\Form;
 use App\Models\GradeSetting;
 use App\Models\Result;
 use App\Models\Session;
@@ -56,7 +57,8 @@ class ResultController extends Controller
 
         $meta = [
             'session' => Session::find($request->session_id)?->name,
-            'term' => Term::find($request->term_id)?->name
+            'term' => Term::find($request->term_id)?->name,
+            'result_form' => Form::find($request->form_id)?->name
         ];
 
         $dompdf = Pdf::setOptions(['isRemoteEnabled' => true]); /*->setHttpContext(
