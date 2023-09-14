@@ -6,7 +6,7 @@
   <input type="hidden" name="token" value="{{ $token }}">
   <input type="hidden" name="email" value="{{ request()->get('email') }}">
     <div class="text-center">
-        <img src="/logo.png" class="img-fluid w-25" alt="Logo">
+        <img src="{{ asset('logo.png') }}" class="img-fluid w-25" alt="Logo">
         <h4>{{ $config['school_acronym'] }}</h4>
         <h6>Reset Password</h6>
     </div>

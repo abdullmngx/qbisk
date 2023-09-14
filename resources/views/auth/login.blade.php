@@ -4,7 +4,7 @@
 <form class="theme-form login-form" method="POST">
     @csrf
     <div class="text-center">
-        <img src="/logo.png" class="img-fluid w-25" alt="Logo">
+        <img src="{{ asset('logo.png') }}" class="img-fluid w-25" alt="Logo">
         <h4>{{ $config['school_acronym'] }}</h4>
         <h6>Log in to your account.</h6>
     </div>
