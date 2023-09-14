@@ -77,7 +77,7 @@
             <td>No of times sch. opened: {{ $student->present_count + $student->absent_count }}</td>
         </tr>
         <tr style="text-transform: uppercase">
-            <td>class: {{ $meta['resul_form'] }}{{ $student->arm }} </td>
+            <td>class: {{ $meta['result_form'] }}{{ $student->arm }} </td>
             <td>no. of times present: {{ $student->present_count }}</td>
         </tr>
         <tr style="text-transform: uppercase">
