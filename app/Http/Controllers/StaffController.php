@@ -437,7 +437,7 @@ class StaffController extends Controller
 
     public function applicants()
     {
-        $applicants = Applicant::where('status', 'not admitted')->latest()->get();
+        $applicants = Applicant::where('final_submission', 1)->where('status', 'not admitted')->latest()->get();
         return view('admin.applicants', ['applicants'=> $applicants]);
     }
 
