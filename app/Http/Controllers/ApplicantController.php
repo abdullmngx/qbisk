@@ -92,11 +92,13 @@ class ApplicantController extends Controller
         {
             $config = app('configs');
             $info = collect($applicant->toArray())->except('id', 'application_number', 'status', 'health_status', 'health_status_description', 'final_submission');
-            $count = AdmissionCount::where('session_id', $config['current_session'])->first()?->count ?? 0;
+            $admissionCount = AdmissionCount::first();
+            $count = $admissionCount?->count ?? 0;
             $admission_number = 'QB/'.date('y').'/'.sprintf('%04d', $count+1);
             $info['admission_number'] = $admission_number;
             $info['form_joined'] = $applicant->form_id;
             $info['application_id'] = $applicant->id;
+            AdmissionCount::updateOrCreate(['id', $admissionCount?->id],['count' => $count+1]);
 
             $info = $info->toArray();
 

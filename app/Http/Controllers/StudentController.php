@@ -54,10 +54,11 @@ class StudentController extends Controller
             DB::beginTransaction();
             if (!$request->admission_number)
             {
-                $count = AdmissionCount::where('session_id', $config->value)->first()?->count ?? 0;
+                $admissionCount = AdmissionCount::first();
+                $count = $admissionCount?->count ?? 0;
                 $admission_number = 'QB/'.date('y').'/'.sprintf('%04d', $count+1);
                 $student['admission_number'] = $admission_number;
-                AdmissionCount::updateOrCreate(['session_id' => $config->value],['count' => $count+1]);
+                AdmissionCount::updateOrCreate(['id', $admissionCount?->id],['count' => $count+1]);
             }
 
 
