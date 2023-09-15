@@ -59,7 +59,7 @@
             amount: {{ $invoice->amount }},
             currency: "NGN",
             payment_options: "card, banktransfer, ussd",
-            redirect_url: "http://127.0.0.1:7000/payment-success",
+            redirect_url: "https://" +location.hostname + "/payment/done",
             customer: {
                 email: "{{ auth('applicant')->user()->email }}",
                 phone_number: "{{ auth('applicant')->user()->phone_number }}",

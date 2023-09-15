@@ -16,9 +16,11 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Models\Announcement;
+use App\Models\Invoice;
 use App\Models\Result;
 use App\Models\Student;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -169,6 +171,43 @@ Route::prefix('student')->group(function () {
         //logout
         Route::get('logout', [StudentController::class, 'logout'])->name('student.logout');
     });
+});
+
+Route::get('/payment/done', function () {
+    $invoice_number = request()->get('tx_ref');
+    $transaction_id = request()->get('transaction_id');
+    $status = request()->get('status');
+
+    $verification = Http::withHeaders([
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Bearer '. env('FLUTTERWAVE_SECRET')
+    ])
+    ->get('https://api.flutterwave.com/v3/transactions/'.$transaction_id.'/verify')
+    ->json();
+    if ($verification['status'] == "success")
+    {
+        if ($verification['data']['status'] == "successful")
+        {
+            $data = $verification['data'];
+            Invoice::where('invoice_number', $invoice_number)
+            ->update([
+                'payment_reference' => $data['flw_ref'],
+                'payment_status' => 'successful',
+                'status' => 'paid',
+                'paid_at' => now(),
+                'transaction_id' => $transaction_id
+            ]);
+            return view('payment_success');
+        }
+        else
+        {
+            return view('payment_failed');
+        }
+    }
+    else
+    {
+        return view("payment_failed");
+    }
 });
 
 Route::get('show', function (){
