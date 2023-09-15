@@ -172,5 +172,5 @@ Route::prefix('student')->group(function () {
 });
 
 Route::get('show', function (){
-    return Hash::make('Skidnewpass100');
+    return base64_encode('ThisIsMy$FlutterWaveSuper@SecretHashToVerify/Webhooks.16');
 });

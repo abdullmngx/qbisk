@@ -88,4 +88,22 @@ class Applicant extends Authenticatable
     {
         return Attribute::make(get: fn($val, $att) => Student::where('application_id', $att['id'])->first()?->admission_number);
     }
+
+    public function feesPaid(): Attribute
+    {
+        $config = app('configs');
+        $fees_paid = [];
+        return Attribute::make(get: function ($val, $att) use ($config, &$fees_paid) {
+            $invoices = Invoice::where('owner_type', 'applicant')
+            ->where('owner_id', $att['id'])
+            ->where('status', 'paid')
+            ->where('session_id', $config['current_session'])
+            ->get();
+            foreach($invoices as $invoice)
+            {
+                $fees_paid[] = $invoice->invoice_type;
+            }
+        });
+        return implode(',', $fees_paid);
+    }
 }

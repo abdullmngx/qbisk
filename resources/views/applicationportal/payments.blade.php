@@ -16,10 +16,16 @@
                         @if (session()->has('message'))
                             <div class="alert alert-success">{{ session()->get('message') }}</div>
                         @endif
-                        <div class="mb-4">
-                            <a href="javascript:void" data-bs-toggle="modal" data-bs-target="#invoiceModal" class="btn btn-primary">Generate Invoice</a>
-                        </div>
 
+                        @if (auth('applicant')->user()->final_submission == '1')
+                            <div class="mb-4">
+                                <a href="javascript:void" data-bs-toggle="modal" data-bs-target="#invoiceModal" class="btn btn-primary">Generate Invoice</a>
+                            </div>
+                        @else
+                            <div class="mb-4 text-center">
+                                <a href="{{ route('applicant.profile') }}" class="text-danger">please complete your profile to activate payment, click here</a>
+                            </div>
+                        @endif
                         <div class="table-responsive">
                             <table class="table table-striped table-hover data-table">
                                 <thead>

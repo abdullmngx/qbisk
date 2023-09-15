@@ -30,30 +30,36 @@
         </div>
     </div>
     <div class="col-md-7">
-        <div class="row">
-            @foreach ($payments as $payment)
-                <div class="col-6">
-                    <div class="card radius-10">
-                        <div class="card-body">
-                            <div class="d-flex align-items-start gap-2">
-                                <div>
-                                    <p class="mb-0 fs-6">{{ $payment->name }}</p>
+        @if ($user->final_submission == "1")
+            <div class="row">
+                @foreach ($payments as $payment)
+                    <div class="col-6">
+                        <div class="card radius-10">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start gap-2">
+                                    <div>
+                                        <p class="mb-0 fs-6">{{ $payment->name }}</p>
+                                    </div>
+                                    <div class="ms-auto radius-10 p-2 text-white bg-{{ $payment->status == 'paid' ? 'success':'danger' }}">
+                                        {{ $payment->status }}
+                                    </div>
                                 </div>
-                                <div class="ms-auto radius-10 p-2 text-white bg-{{ $payment->status == 'paid' ? 'success':'danger' }}">
-                                    {{ $payment->status }}
+                                <div class="d-flex align-items-center mt-3">
+                                    <div>
+                                        <h4 class="mb-0">NGN {{ $payment->amount }}</h4>
+                                    </div>
+                                    <div class="ms-auto"></div>
                                 </div>
-                            </div>
-                            <div class="d-flex align-items-center mt-3">
-                                <div>
-                                    <h4 class="mb-0">NGN {{ $payment->amount }}</h4>
-                                </div>
-                                <div class="ms-auto"></div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        @else
+            <div class="mb-4 text-center">
+                <a href="{{ route('applicant.profile') }}" class="text-danger">please complete your profile to activate payment, click here</a>
+            </div>
+        @endif
         <!--end row-->
     </div>
 </div>

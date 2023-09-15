@@ -23,7 +23,7 @@
                                         <th>Application Number</th>
                                         <th>Name</th>
                                         <th>Class Applied</th>
-                                        <th>Payment Status</th>
+                                        <th>Fees Paid</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -34,7 +34,7 @@
                                             <td>{{ $applicant->application_number }}</td>
                                             <td>{{ $applicant->full_name }}</td>
                                             <td>{{ $applicant->applied_form_name }}</td>
-                                            <td>{{ $applicant->payment_status }}</td>
+                                            <td>{{ $applicant->fees_paid }}</td>
                                             <td>
                                                 <a href="/staff/applicants/{{ $applicant->id }}" class="btn btn-primary">View</a>
                                             </td>

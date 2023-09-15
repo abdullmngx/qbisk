@@ -135,19 +135,26 @@ class StudentController extends Controller
     {
         $student = auth('student')->user();
         $config = app('configs');
+
+        $owner_type = 'student';
+
+        if ($student->session_id == $config['current_session'] && $student->term_id == $config['current_term'])
+        {
+            $owner_type = 'applicant';
+        }
         $match_params = [
             'session_id' => $config['current_session'],
             'term_id' => $config['current_term'],
             'section_id' => $student->section_id,
             'form_id' => $student->form_id,
             'arm_id' => $student->arm_id,
-            'owner_type' => 'student'
+            'owner_type' => $owner_type
         ];
 
-        $paid_invoices = Invoice::where('owner_type', 'student')
+        $paid_invoices = Invoice::whereIn('owner_type', ['student', 'applicant'])
         ->where('session_id', $config['current_session'])
         ->where('term_id', $config['current_term'])
-        ->where('owner_id', $student->id)
+        ->whereIn('owner_id', [$student->id, $student->application_id])
         ->where('status', 'paid')
         ->pluck('invoice_type_id')
         ->toArray();
