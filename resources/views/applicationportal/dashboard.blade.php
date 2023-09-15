@@ -14,6 +14,7 @@
                 </div>
                 <div class="text-center mb-4">
                     <h5>{{ auth('applicant')->user()->full_name }}</h5>
+                    <h6>{{ auth('applicant')->user()->application_number }}</h6>
                 </div>
                 <div class="row mb-4">
                     <div class="col-12">
