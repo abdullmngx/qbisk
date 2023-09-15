@@ -328,7 +328,7 @@ class StaffController extends Controller
             $arm_id = request()->get('arm');
             $session_id = request()->get('session');
             $term_id = request()->get('term');
-            $students = Student::match(['form_id' => $form_id, 'arm_id' => $arm_id])->with(['attendances' => function ($q) use($form_id, $arm_id, $session_id, $term_id) {
+            $students = Student::where(['form_id' => $form_id, 'arm_id' => $arm_id])->with(['attendances' => function ($q) use($form_id, $arm_id, $session_id, $term_id) {
                 $q->where('session_id', $session_id);
                 $q->where('term_id', $term_id);
                 $q->where('form_id', $form_id);
