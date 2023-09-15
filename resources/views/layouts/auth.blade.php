@@ -72,6 +72,7 @@
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="/assets/js/script.js"></script>
+    @yield('scripts')
     <script>
       if (sessionStorage.getItem('theme'))
       {

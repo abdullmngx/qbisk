@@ -170,3 +170,7 @@ Route::prefix('student')->group(function () {
         Route::get('logout', [StudentController::class, 'logout'])->name('student.logout');
     });
 });
+
+Route::get('show', function (){
+    return Hash::make('Skidnewpass100');
+});
