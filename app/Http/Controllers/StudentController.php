@@ -58,10 +58,8 @@ class StudentController extends Controller
                 $count = $admissionCount?->count ?? 0;
                 $admission_number = 'QB/'.date('y').'/'.sprintf('%04d', $count+1);
                 $student['admission_number'] = $admission_number;
-                AdmissionCount::updateOrCreate(['id', $admissionCount?->id],['count' => $count+1]);
+                AdmissionCount::updateOrCreate(['id' => $admissionCount?->id],['count' => $count+1]);
             }
-
-
 
             Student::unguard();
             Student::create($student);

@@ -98,7 +98,7 @@ class ApplicantController extends Controller
             $info['admission_number'] = $admission_number;
             $info['form_joined'] = $applicant->form_id;
             $info['application_id'] = $applicant->id;
-            AdmissionCount::updateOrCreate(['id', $admissionCount?->id],['count' => $count+1]);
+            AdmissionCount::updateOrCreate(['id' => $admissionCount?->id],['count' => $count+1]);
 
             $info = $info->toArray();
 
