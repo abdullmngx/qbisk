@@ -73,7 +73,7 @@ class ResultController extends Controller
 
         if ($request->admission_number)
         {
-            $student = Student::match($request->only('admission_number'))->with(['results' => function ($query) use ($request) {
+            $student = Student::where('admission_number', $request->admission_number)->with(['results' => function ($query) use ($request) {
                 $query->where('session_id', $request->session_id);
                 $query->where('term_id', $request->term_id);
                 $query->where('form_id', $request->form_id);
@@ -83,7 +83,14 @@ class ResultController extends Controller
             return $pdf->download('result.pdf');
         }
 
-        $students = Student::match($request->only('section_id', 'form_id', 'arm_id'))->with(['results' => function ($query) use ($request) {
+        $student_ids = Result::where('session_id', $request->session_id)
+        ->where('term_id', $request->term_id)
+        ->where('form_id', $request->form_id)
+        ->where('arm_id', $request->arm_id)
+        ->pluck('student_id')
+        ->unique()
+        ->toArray();
+        $students = Student::whereIn('id', $student_ids)->with(['results' => function ($query) use ($request) {
             $query->where('session_id', $request->session_id);
             $query->where('term_id', $request->term_id);
             $query->where('form_id', $request->form_id);
