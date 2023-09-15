@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\StaffController;
 use App\Models\Form;
 use Illuminate\Http\Request;
@@ -25,3 +27,5 @@ Route::get('get-forms/{section_id}', [StaffController::class, 'getFormsBySection
 Route::post('/forms/getbysection', function (Request $request) {
     return response(Form::where("section_id", $request->section_id)->get(), 200);
 });
+
+Route::post('/flw-webhook', [InvoiceController::class,'webhook']);
