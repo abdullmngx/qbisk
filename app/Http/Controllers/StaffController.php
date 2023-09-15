@@ -308,7 +308,9 @@ class StaffController extends Controller
         if (request()->has('form') && request('arm'))
         {
             $arm = Arm::find(request()->get('arm'));
-            $students = Student::match(['form_id' => request()->get('form'), 'arm_id' => request()->get('arm')])->get();
+            $students = Student::where('form_id', request()->get('form'))
+            ->where('arm_id', request()->get('arm'))
+            ->get();
         }
         return view('admin.mark_attendance', ['forms' => $forms, 'arms' => $arms, 'students' => $students, 'form' => $form, 'arm' => $arm]);
     }
