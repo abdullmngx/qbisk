@@ -67,7 +67,7 @@
                 },
                 customizations: {
                     title: "{{ $invoice->invoice_type }}",
-                    description: "Payment for {{ $invoice->invoice_type }}",
+                    description: "Payment for student {{ $invoice->invoice_type }}",
                     logo: "https://" + location.hostname + "/logo.png",
                 },
             });
