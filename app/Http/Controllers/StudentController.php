@@ -152,7 +152,7 @@ class StudentController extends Controller
             'owner_type' => $owner_type
         ];
 
-        $paid_invoices = Invoice::whereIn('owner_type', ['student', 'applicant'])
+        $paid_invoices = Invoice::where('owner_type', $owner_type)
         ->where('session_id', $config['current_session'])
         ->where('term_id', $config['current_term'])
         ->whereIn('owner_id', $owner_ids)
