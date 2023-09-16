@@ -54,22 +54,22 @@
     <script>
         function makePayment() {
             FlutterwaveCheckout({
-            public_key: "{{ env('FLUTTERWAVE_PUBLIC') }}",
-            tx_ref: "{{ $invoice->invoice_number }}",
-            amount: {{ $invoice->amount }},
-            currency: "NGN",
-            payment_options: "card, banktransfer, ussd",
-            redirect_url: "https://" +location.hostname + "/payment/done",
-            customer: {
-                email: "{{ auth('student')->user()->email }}",
-                phone_number: "{{ auth('student')->user()->phone_number }}",
-                name: "{{ auth('student')->user()->full_name }}",
-            },
-            customizations: {
-                title: "{{ $invoice->invoice_type }}",
-                description: "Payment for {{ $invoice->invoice_type }}",
-                logo: "http://127.0.0.1:7000/logo.png",
-            },
+                public_key: "{{ env('FLUTTERWAVE_PUBLIC') }}",
+                tx_ref: "{{ $invoice->invoice_number }}",
+                amount: {{ $invoice->amount }},
+                currency: "NGN",
+                payment_options: "card, banktransfer, ussd",
+                redirect_url: "https://" +location.hostname + "/payment/done",
+                customer: {
+                    email: "{{ auth('student')->user()->email }}",
+                    phone_number: "{{ auth('student')->user()->phone_number }}",
+                    name: "{{ auth('student')->user()->full_name }}",
+                },
+                customizations: {
+                    title: "{{ $invoice->invoice_type }}",
+                    description: "Payment for {{ $invoice->invoice_type }}",
+                    logo: "https://" + location.hostname + "/logo.png",
+                },
             });
         }
     </script>
