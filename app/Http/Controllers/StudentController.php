@@ -136,10 +136,12 @@ class StudentController extends Controller
         $config = app('configs');
 
         $owner_type = 'student';
+        $owner_ids = [ $student->id ];
 
         if ($student->session_id == $config['current_session'] && $student->term_id == $config['current_term'])
         {
             $owner_type = 'applicant';
+            $owner_ids[] = $student->application_id;
         }
         $match_params = [
             'session_id' => $config['current_session'],
@@ -153,7 +155,7 @@ class StudentController extends Controller
         $paid_invoices = Invoice::whereIn('owner_type', ['student', 'applicant'])
         ->where('session_id', $config['current_session'])
         ->where('term_id', $config['current_term'])
-        ->whereIn('owner_id', [$student->id, $student->application_id])
+        ->whereIn('owner_id', $owner_ids)
         ->where('status', 'paid')
         ->pluck('invoice_type_id')
         ->toArray();
