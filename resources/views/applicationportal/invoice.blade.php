@@ -66,7 +66,7 @@
                     name: "{{ auth('applicant')->user()->full_name }}",
                 },
                 customizations: {
-                    title: "{{ $invoice->invoice_type }}",
+                    title: "Applicant {{ $invoice->invoice_type }}",
                     description: "Payment for applicant {{ $invoice->invoice_type }}",
                     logo: "https://" + location.hostname + "/logo.png",
                 },
