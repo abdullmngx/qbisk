@@ -36,6 +36,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/storage/uploads/{filename}', function ($filename)
+{
+    // Add folder path here instead of storing in the database.
+    $path = storage_path('app/public/uploads/' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+    return $response;
+});
+
 Route::get('/', function () {
     $announcement = Announcement::latest()->first();
     return view('home', ['announcement' => $announcement]);
@@ -214,22 +231,4 @@ Route::get('/payment/done', function () {
 
 Route::get('show', function (){
     return base64_encode('ThisIsMy$FlutterWaveSuper@SecretHashToVerify/Webhooks.16');
-});
-
-Route::get('storage/uploads/{filename}', function ($filename)
-{
-    // Add folder path here instead of storing in the database.
-    $path = storage_path('public/uploads' . $filename);
-
-    if (!File::exists($path)) {
-        abort(404);
-    }
-
-    $file = File::get($path);
-    $type = File::mimeType($path);
-
-    $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
-
-    return $response;
 });
