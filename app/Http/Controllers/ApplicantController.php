@@ -12,6 +12,7 @@ use App\Models\Student;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -170,13 +171,19 @@ class ApplicantController extends Controller
             "allergies" => "required",
             "height" => "required"
         ]);
-
+        $applicant = Applicant::where('id', auth('applicant')->id())->first();
+        $picture = str_replace('/storage/uploads/','', $applicant->passport);
+        $path = storage_path('app/public/uploads/'. $picture);
+        if (File::exists($path))
+        {
+            File::delete($path);
+        }
         $applicant_info = $request->except('_token', 'picture');
         $file = $request->file('picture')->store('public/uploads');
         $passport = Storage::url($file);
         $applicant_info['passport'] = $passport;
         $applicant_info['final_submission'] = 1;
-        Applicant::where('id', auth('applicant')->id())->update($applicant_info);
+        $applicant->update($applicant_info);
         return back()->with('success', 'Information has been saved');
     }
 
