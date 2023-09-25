@@ -150,7 +150,7 @@ class ApplicantController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            "picture" => 'required|max:104',
+            "picture" => 'required|max:502',
             "first_name" => 'required',
             "surname" => 'required',
             "dob" => 'required',
