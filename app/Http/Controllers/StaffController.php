@@ -22,6 +22,7 @@ use App\Models\Term;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Storage;
@@ -242,7 +243,7 @@ class StaffController extends Controller
         $staff = $request->except('_token');
         $passport = $request->file('passport')->store('public/uploads');
 
-        $staff['passport'] = str_replace('public/', '', $passport);
+        $staff['passport'] = Storage::url($passport);
         $staff['password'] = Hash::make($request->phone_number);
 
         Staff::unguard();
@@ -280,9 +281,14 @@ class StaffController extends Controller
         $staff = Staff::find($request->staff_id);
         if ($request->file('passport'))
         {
-            Storage::disk('local')->delete('public/'.$staff->passport);
+            $file = str_replace('/storage/uploads/', '', $staff->passport);
+            $path = storage_path('app/public/uploads'. $file);
+            if (File::exists($path))
+            {
+                File::delete($path);
+            }
             $passport = $request->file('passport')->store('public/uploads');
-            $data['passport'] = str_replace('public/', '', $passport);
+            $data['passport'] = Storage::url($passport);
         }
         Staff::unguard();
         $staff->update($data);

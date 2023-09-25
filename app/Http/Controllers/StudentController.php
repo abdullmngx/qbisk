@@ -18,6 +18,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -97,9 +98,14 @@ class StudentController extends Controller
         $student = Student::find($request->student_id);
         if ($request->file('passport'))
         {
-            Storage::disk('local')->delete('public/'.$student->passport);
+            $file = str_replace('/storage/uploads/', '', $student->passport);
+            $path = storage_path('app/public/uploads/'. $file);
+            if (File::exists($path))
+            {
+                File::delete($path);
+            }
             $passport = $request->file('passport')->store('public/uploads');
-            $data['passport'] = str_replace('public/', '', $passport);
+            $data['passport'] = Storage::url($passport);
         }
         Student::unguard();
         $student->update($data);
