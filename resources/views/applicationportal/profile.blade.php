@@ -16,7 +16,7 @@
                         <div class="mb-4">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p><img src="{{ $user->passport ?? '/avatar.png' }}" alt="avatar" class="avatar avatar-md w-25 img-fluid"></p>
+                                    <p><img src="{{ $user->passport ? asset($user->passport) : '/avatar.png' }}" alt="avatar" class="avatar avatar-md w-25 img-fluid"></p>
                                 </div>
                             </div>
                             <div class="row mb-4">

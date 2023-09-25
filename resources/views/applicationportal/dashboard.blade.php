@@ -8,7 +8,7 @@
                 <div class="row justify-content-center mb-4">
                     <div class="col-4">
                         <div class="text-center">
-                            <img src="{{ $user->passport ?? '/avatar.png' }}" alt="" class="img-fluid w-100">
+                            <img src="{{ $user->passport ? asset($user->passport) : '/avatar.png' }}" alt="" class="img-fluid w-100">
                         </div>
                     </div>
                 </div>

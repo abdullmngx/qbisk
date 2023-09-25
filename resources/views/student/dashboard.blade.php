@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-xl-4 col-md-4 box-col-4">
                 <div class="card custom-card">
-                  <div class="card-profile"><img class="rounded-circle" src="{{ auth('student')->user()->passport }}" alt=""></div>
+                  <div class="card-profile"><img class="rounded-circle" src="{{ asset((auth('student')->user()->passport ?? '/avatar.png')) }}" alt=""></div>
                   <div class="text-center profile-details">
                     <h4><a href="social-app.html" alt="">{{ auth('student')->user()->full_name }}</a></h4>
                     <h6>{{ $student->admission_number }}</h6>

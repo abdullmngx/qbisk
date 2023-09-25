@@ -19,8 +19,10 @@ use App\Models\Announcement;
 use App\Models\Invoice;
 use App\Models\Result;
 use App\Models\Student;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -212,4 +214,22 @@ Route::get('/payment/done', function () {
 
 Route::get('show', function (){
     return base64_encode('ThisIsMy$FlutterWaveSuper@SecretHashToVerify/Webhooks.16');
+});
+
+Route::get('storage/uploads/{filename}', function ($filename)
+{
+    // Add folder path here instead of storing in the database.
+    $path = storage_path('public/uploads' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
 });
