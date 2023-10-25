@@ -106,7 +106,21 @@
                 <div class="col-xl-12" >
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Input Scores</h4>
+                            <div class="mb-4">
+                                <h4 class="card-title">Input Scores</h4>
+                            </div>
+                            <div class="mb-4">
+                                <a href="/staff/result/download-sheet/?form_id={{ request()->get('form') }}&arm_id={{ request()->get('arm') }}&subject_id={{ request()->get('subject') }}" class="btn btn-primary">Download Excel</a>
+                                <a href="javascript:void" data-bs-toggle="modal" data-bs-target="#importModal" class="btn btn-warning">Upload Excel</a>
+                            </div>
+                            <div class="mb-4">
+                                @foreach ($errors->all() as $err)
+                                    <div class="alert alert-danger">{{ $err }}</div>
+                                @endforeach
+                                @if (session()->has('success'))
+                                    <div class="alert alert-success">{{ session('success') }}</div>
+                                @endif
+                            </div>
                             <div class="mt-4">
                                 <h6>Subject: {{ $subject->name }}</h6>
 
@@ -162,6 +176,31 @@
                     </div>
                 </div>
             @endif
+        </div>
+    </div>
+@endsection
+
+@section('modals')
+    <div class="modal fade" id="importModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Import Result Excel</h4>
+                    <a href="#" data-bs-dismiss="modal" class="btn-close"></a>
+                </div>
+                <div class="modal-body">
+                    <form action="/staff/result/upload/excel" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="subject_id" value="{{ request()->get('subject') }}">
+                        <div class="mb-4">
+                            <input type="file" name="result_file" id="result_file" class="form-control">
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

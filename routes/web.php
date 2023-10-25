@@ -114,6 +114,8 @@ Route::prefix('/staff')->group(function () {
         Route::post('/result/upload', [ResultController::class, 'store'])->name('staff.result.store');
         Route::get('/result/print', [StaffController::class, 'printResult'])->name('staff.result.print');
         Route::post('/result/print', [ResultController::class, 'print'])->name('result.print');
+        Route::get('/result/download-sheet/', [StaffController::class, 'downloadResultExcel']);
+        Route::post('/result/upload/excel', [StaffController::class, 'importResultExcel']);
         //Config Routes
         Route::get('/configurations', [StaffController::class, 'configurations'])->name('staff.configurations');
         Route::post('/configurations', [Controller::class, 'saveConfig'])->name('staff.save_configurations');

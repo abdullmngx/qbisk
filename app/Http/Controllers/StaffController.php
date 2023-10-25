@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ResultExport;
+use App\Imports\ResultImport;
 use App\Models\Announcement;
 use App\Models\Applicant;
 use App\Models\Arm;
@@ -26,6 +28,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 
 class StaffController extends Controller
@@ -501,5 +504,35 @@ class StaffController extends Controller
     {
         $cards = Card::where('status', 'unused')->get();
         return view('admin.cards', ['cards' => $cards]);
+    }
+
+    public function downloadResultExcel(Request $request)
+    {
+        $form_id = $request->form_id;
+        $arm_id = $request->arm_id;
+        $subject_id = $request->subject_id;
+        $subject = Subject::find($subject_id);
+        $form = Form::find($form_id);
+        $arm = Arm::find($arm_id);
+        $students = Student::where('form_id', $form_id)
+        ->where('arm_id', $arm_id)
+        ->get(['admission_number', 'first_name', 'middle_name', 'surname']);
+        $students->map(function ($student) {
+            $student->ca1_score = 0;
+            $student->ca2_score = 0;
+            $student->exam_score = 0;
+        });
+        //dd($students);
+        return Excel::download(new ResultExport($students), strtolower(str_replace(' ', '_', $subject->name)).'_'.strtolower(str_replace(' ', '_', $form->name)).'_'.strtolower(str_replace(' ', '_', $arm->name)).'_scoresheet.xlsx');
+    }
+
+    public function importResultExcel(Request $request)
+    {
+        $request->validate([
+            'result_file' => 'required|file'
+        ]);
+
+        Excel::import(new ResultImport($request->subject_id), $request->file('result_file'));
+        return back()->with('success', 'Scores Imported');
     }
 }
